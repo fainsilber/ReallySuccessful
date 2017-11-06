@@ -1,0 +1,65 @@
+﻿@model MVC.Models.Movie
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            Video: 
+        </dt>
+        <dd>
+            <a href="http://www.youtube.com/watch?feature=player_embedded&v=@Html.DisplayFor(model => model.GetYoutubeId)" target="_blank">
+                <img src="http://img.youtube.com/vi/@Html.DisplayFor(model => model.GetYoutubeId)/0.jpg"
+                     alt="@Html.DisplayFor(model => model.ShortDescription)" width="240" height="180" />
+            </a>
+        </dd>
+
+        @*<dt>
+        @Html.DisplayNameFor(model => model.TrailerUrl)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.TrailerUrl)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.ShortDescription)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.ShortDescription)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Genere)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Genere)
+    </dd>*@
+        <dt>
+            Description
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LongDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Actors)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Actors)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Delete" asp-route-id="@Model.ID">Delete</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

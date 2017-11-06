@@ -1,0 +1,64 @@
+﻿@model MVC.Models.MovieGenreViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Movies" asp-action="Index" method="get">
+    <p>
+        Genre: 
+        <select asp-for="movieGenre" asp-items="Model.genres">
+            <option value="">All</option>
+        </select>
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.movies[0].Title)
+                </th>
+                <th>
+                    Video
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.movies[0].ShortDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.movies[0].Genre)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.movies) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                <a href="http://www.youtube.com/watch?feature=player_embedded&v=@Html.DisplayFor(model => item.GetYoutubeId)" target="_blank">
+                    <img src="http://img.youtube.com/vi/@Html.DisplayFor(model => item.GetYoutubeId)/0.jpg"
+                         alt="@Html.DisplayFor(model => item.ShortDescription)" width="240" height="180" />
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

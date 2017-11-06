@@ -17,14 +17,14 @@ namespace MVC.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "This is a Movie Management Exercise for ReallySuccessful.";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Jonathan Fainsilber.";
 
             return View();
         }
